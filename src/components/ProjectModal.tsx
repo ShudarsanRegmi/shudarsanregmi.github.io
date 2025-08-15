@@ -4,9 +4,28 @@ import { useEffect } from "react";
 import packetSniffer1 from '@/assets/packetsniffer1.png';
 import classroom1 from '@/assets/classroom1.png';
 import vox1 from "@/assets/vox1_1.png";
+import negcesthumb from "@/assets/negcesthumb.png";
 
 
 const projectDetails = {
+  negceslab: {
+    title: "Negces Lab Booking Management System",
+    image: negcesthumb,
+    overview: "Comprehensive booking management platform for the NEGCES Lab at Amrita Vishwa Vidyapeetham, Chennai, designed to simplify lab reservations and optimize scheduling for students and faculty.",
+    features: [
+      "User-friendly interface for booking management",
+      "Real-time availability tracking",
+      "Automated email notifications for bookings",
+      "Admin dashboard for managing reservations",
+    ],
+    tech: {
+      "Frontend": "React.js + Tailwind CSS",
+      "Backend": "Node.js + Express.js",
+      "Database": "MongoDB",
+      "Hosting": "AWS",
+    },
+    github: "https://github.com/ShudarsanRegmi/negceslab",
+  },
   sniffer: {
     title: "Network Packet Sniffer",
     image: packetSniffer1,

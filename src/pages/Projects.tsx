@@ -4,9 +4,34 @@ import { ProjectModal } from "@/components/ProjectModal";
 import packetSniffer1 from "@/assets/packetsniffer1.png";
 import classroom2 from "@/assets/classroom2.png";
 import vox1 from "@/assets/vox1_1.png";
+import negcesthumb from "@/assets/negcesthumb.png";
 
 
 const projects = [
+  {
+    id: "negceslab",
+    title: "Negces Lab Booking Management System",
+    description: "Comprehensive booking management platform for the NEGCES Lab at Amrita Vishwa Vidyapeetham, Chennai, designed to simplify lab reservations and optimize scheduling for students and faculty.",
+    image: negcesthumb,
+    tags: ["MERN", "Hosting", "RealWorldImpact"],
+    color: "text-[var(--accent-green)]",
+},
+{
+    id: "nutrisuppliers",
+    title: "Digital Ledger for NutriSuppliers",
+    description: "Online Ledger Management for a medical suppliers Business. This project helped the client to migrate his physical ledger records to fully digital.",
+    image: negcesthumb,
+    tags: ["MERN", "Hosting", "RealWorldImpact"],
+    color: "text-[var(--accent-green)]",
+},
+{
+    id: "gymmembership",
+    title: "Gym Membership Management System",
+    description: "A comprehensive system for managing gym memberships, including user registration, membership plans, and payment processing.",
+    image: negcesthumb,
+    tags: ["C++", "QT", "Sqlite3", "Desktop Application"],
+    color: "text-[var(--accent-green)]",
+},
   {
     id: "sniffer",
     title: "Network Packet Sniffer",
@@ -15,6 +40,14 @@ const projects = [
     tags: ["C", "Raw Sockets", "Network Protocols"],
     color: "text-[var(--accent-blue)]",
   },
+  {
+    id: "llmvulnscanner",
+    title: "LLM Vulnerability Scanner",
+    description: "A tool to asses security of LLM Integrated Chatbots focused on sensitive data leakage and unauthorized access.",
+    image: negcesthumb,
+    tags: ["Pyton", "Deep Learning", "Transformers", "Research"],
+    color: "text-[var(--accent-green)]",
+},
   {
     id: "classroom",
     title: "Classroom Management System",
