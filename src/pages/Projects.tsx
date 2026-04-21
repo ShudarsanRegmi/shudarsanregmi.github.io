@@ -5,6 +5,7 @@ import packetSniffer1 from "@/assets/packetsniffer1.png";
 import classroom2 from "@/assets/classroom2.png";
 import vox1 from "@/assets/vox1_1.png";
 import negcesthumb from "@/assets/negcesthumb.png";
+import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
 
 
 const projects = [
@@ -20,7 +21,7 @@ const projects = [
     id: "osforensics",
     title: "OSForensics : Attacker Favoured Linux System Forensics",
     description: "A tool for analyzing and investigating operating system artifacts to aid in digital forensics and security research.",
-    image: negcesthumb,
+    image: osForensicsDesktopApp,
     tags: ["Python", "Digital Forensics","Disk Analysis", "Memory Analysis"],
     color: "text-[var(--accent-blue)]",
 },

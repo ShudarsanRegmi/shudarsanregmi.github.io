@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, Github, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import packetSniffer1 from '@/assets/packetsniffer1.png';
 import classroom1 from '@/assets/classroom1.png';
@@ -187,6 +187,7 @@ function getYouTubeEmbedUrl(url: string) {
 export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const project = projectDetails[projectId as keyof typeof projectDetails];
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [isFullscreenGallery, setIsFullscreenGallery] = useState(false);
 
   const galleryImages = useMemo(() => {
     if (project && "gallery" in project && Array.isArray(project.gallery) && project.gallery.length > 0) {
@@ -213,6 +214,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
   useEffect(() => {
     setCurrentGalleryIndex(0);
+    setIsFullscreenGallery(false);
   }, [projectId]);
 
   if (!project) return null;
@@ -265,6 +267,16 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                   alt={`${project.title} preview ${currentGalleryIndex + 1}`}
                   className="w-full h-64 object-cover rounded-2xl"
                 />
+
+                {canBrowseGallery && (
+                  <button
+                    onClick={() => setIsFullscreenGallery(true)}
+                    className="absolute right-3 top-3 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+                    aria-label="Open fullscreen gallery"
+                  >
+                    <Maximize2 className="w-4 h-4" />
+                  </button>
+                )}
 
                 {canBrowseGallery && (
                   <>
@@ -387,6 +399,51 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
           </div>
         </motion.div>
       </motion.div>
+
+      {isFullscreenGallery && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[120] bg-black/95 flex items-center justify-center"
+          onClick={() => setIsFullscreenGallery(false)}
+        >
+          <div className="relative w-full h-full max-w-[95vw] max-h-[95vh] flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={galleryImages[currentGalleryIndex]}
+              alt={`${project.title} fullscreen ${currentGalleryIndex + 1}`}
+              className="w-full h-full object-contain"
+            />
+
+            <button
+              onClick={() => setIsFullscreenGallery(false)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+              aria-label="Exit fullscreen gallery"
+            >
+              <Minimize2 className="w-4 h-4" />
+            </button>
+
+            {canBrowseGallery && (
+              <>
+                <button
+                  onClick={showPreviousImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={showNextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+          </div>
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }
