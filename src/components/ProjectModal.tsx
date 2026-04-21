@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github } from "lucide-react";
-import { useEffect } from "react";
+import { X, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import packetSniffer1 from '@/assets/packetsniffer1.png';
 import classroom1 from '@/assets/classroom1.png';
 import vox1 from "@/assets/vox1_1.png";
@@ -162,8 +162,47 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
+function getYouTubeEmbedUrl(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+    let videoId = "";
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      videoId = parsedUrl.pathname.replace("/", "");
+    } else if (parsedUrl.pathname.includes("/watch")) {
+      videoId = parsedUrl.searchParams.get("v") || "";
+    } else if (parsedUrl.pathname.includes("/embed/")) {
+      videoId = parsedUrl.pathname.split("/embed/")[1] || "";
+    } else if (parsedUrl.pathname.includes("/shorts/")) {
+      videoId = parsedUrl.pathname.split("/shorts/")[1] || "";
+    }
+
+    if (!videoId) return null;
+    return `https://www.youtube.com/embed/${videoId}?rel=0`;
+  } catch {
+    return null;
+  }
+}
+
 export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const project = projectDetails[projectId as keyof typeof projectDetails];
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+
+  const galleryImages = useMemo(() => {
+    if (project && "gallery" in project && Array.isArray(project.gallery) && project.gallery.length > 0) {
+      return project.gallery;
+    }
+
+    return project ? [project.image] : [];
+  }, [project]);
+
+  const videoEmbedUrl = useMemo(() => {
+    if (project && "video" in project && project.video) {
+      return getYouTubeEmbedUrl(project.video);
+    }
+
+    return null;
+  }, [project]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -172,7 +211,24 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
     };
   }, []);
 
+  useEffect(() => {
+    setCurrentGalleryIndex(0);
+  }, [projectId]);
+
   if (!project) return null;
+
+  const hasGallery = "gallery" in project && Array.isArray(project.gallery) && project.gallery.length > 0;
+  const hasAbstract = "abstract" in project && Boolean(project.abstract);
+  const hasVideo = "video" in project && Boolean(project.video) && Boolean(videoEmbedUrl);
+  const canBrowseGallery = galleryImages.length > 1;
+
+  const showPreviousImage = () => {
+    setCurrentGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const showNextImage = () => {
+    setCurrentGalleryIndex((prev) => (prev + 1) % galleryImages.length);
+  };
 
   return (
     <AnimatePresence>
@@ -188,7 +244,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 50 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="glass-panel dark:glass-panel light:glass-panel-light rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border border-border"
+          className="glass-panel dark:glass-panel light:glass-panel-light rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border border-border"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-6">
@@ -202,11 +258,69 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
           </div>
 
           <div className="space-y-6">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-64 object-cover rounded-2xl"
-            />
+            <div className="space-y-3">
+              <div className="relative">
+                <img
+                  src={galleryImages[currentGalleryIndex]}
+                  alt={`${project.title} preview ${currentGalleryIndex + 1}`}
+                  className="w-full h-64 object-cover rounded-2xl"
+                />
+
+                {canBrowseGallery && (
+                  <>
+                    <button
+                      onClick={showPreviousImage}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+                      aria-label="Previous image"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={showNextImage}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
+                      aria-label="Next image"
+                    >
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                  </>
+                )}
+              </div>
+
+              {hasGallery && (
+                <div className="flex flex-wrap gap-2">
+                  {galleryImages.map((img, index) => (
+                    <button
+                      key={`${img}-${index}`}
+                      onClick={() => setCurrentGalleryIndex(index)}
+                      className={`h-14 w-20 rounded-lg overflow-hidden border transition-all ${
+                        index === currentGalleryIndex ? "border-[var(--accent-blue)]" : "border-border"
+                      }`}
+                      aria-label={`Open gallery image ${index + 1}`}
+                    >
+                      <img src={img} alt={`${project.title} thumbnail ${index + 1}`} className="w-full h-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {hasVideo && (
+              <div>
+                <h4 className="text-xl font-bold mb-3 text-[var(--accent-blue)]">
+                  Demo Video
+                </h4>
+                <div className="rounded-2xl overflow-hidden border border-border bg-black">
+                  <iframe
+                    src={videoEmbedUrl || undefined}
+                    title={`${project.title} video`}
+                    className="w-full aspect-video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              </div>
+            )}
             
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -216,6 +330,17 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 <p className="text-muted-foreground mb-6">
                   {project.overview}
                 </p>
+
+                {hasAbstract && (
+                  <>
+                    <h4 className="text-xl font-bold mb-4 text-[var(--accent-blue)]">
+                      Abstract
+                    </h4>
+                    <p className="text-muted-foreground mb-6 whitespace-pre-line">
+                      {project.abstract}
+                    </p>
+                  </>
+                )}
                 
                 <h4 className="text-xl font-bold mb-4 text-[var(--accent-blue)]">
                   Key Features
@@ -229,15 +354,17 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
               
               <div>
                 <h4 className="text-xl font-bold mb-4 text-[var(--accent-purple)]">
-                  Technical Details
+                  Tech Stack
                 </h4>
                 <div className="space-y-3">
                   {Object.entries(project.tech).map(([key, value]) => (
-                    <div key={key} className="glass-panel dark:glass-panel light:glass-panel-light rounded-xl p-3 bg-background/50">
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">{key}</span>
-                        <span className="font-medium text-foreground">{value}</span>
-                      </div>
+                    <div key={key} className="glass-panel dark:glass-panel light:glass-panel-light rounded-xl p-4 bg-background/50">
+                      <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground mb-2">
+                        {key}
+                      </p>
+                      <p className="font-medium text-foreground text-sm leading-relaxed break-words whitespace-pre-wrap">
+                        {value}
+                      </p>
                     </div>
                   ))}
                 </div>
