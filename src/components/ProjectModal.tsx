@@ -5,6 +5,17 @@ import packetSniffer1 from '@/assets/packetsniffer1.png';
 import classroom1 from '@/assets/classroom1.png';
 import vox1 from "@/assets/vox1_1.png";
 import negcesthumb from "@/assets/negcesthumb.png";
+import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
+import osForensicsAiInvestigator from '@/assets/osforensics/ai_investigator.png';
+import osForensicsBrowserArtifacts from '@/assets/osforensics/browser_artifacts.png';
+import osForensicsCaseMgmt from '@/assets/osforensics/casemgmt.png';
+import osForensicsExport from '@/assets/osforensics/export.png';
+import osForensicsFilesystemBrowser from '@/assets/osforensics/filesystem_browser.png';
+import osForensicsMemoryAnalysis from '@/assets/osforensics/memory_analysis.png';
+import osForensicsRecent from '@/assets/osforensics/recent.png';
+import osForensicsServices from '@/assets/osforensics/services.png';
+import osForensicsSources from '@/assets/osforensics/sources.png';
+import osForensicsTimeline from '@/assets/osforensics/timeline.png';
 
 
 const projectDetails = {
@@ -26,6 +37,47 @@ const projectDetails = {
     },
     github: "https://github.com/ShudarsanRegmi/negceslab",
   },
+  osforensics: {
+    title: "OSForensics : Attacker Favoured Linux System Forensics",
+    image: osForensicsDesktopApp,
+    gallery: [
+      osForensicsDesktopApp,
+      osForensicsAiInvestigator,
+      osForensicsBrowserArtifacts,
+      osForensicsCaseMgmt,
+      osForensicsExport,
+      osForensicsFilesystemBrowser,
+      osForensicsMemoryAnalysis,
+      osForensicsRecent,
+      osForensicsServices,
+      osForensicsSources,
+      osForensicsTimeline,
+    ],
+    overview: "An AI-assisted desktop digital forensics application for disk, live, remote, and memory investigations with case management and structured reporting focused on adversory favored Linux system distros",
+    abstract: "OSForensics is a forensic prototype developed for the CyberSheild 2026 challenge on Analysis of Privacy-Focused and Adversary-Favored Operating Systems. The solution targets Linux environments commonly leveraged for offensive security and anonymity workflows, including distributions such as Kali Linux, BlackArch, and Tails OS.\n\nThe solution is delivered as a desktop application packaged with Electron and developed using web technologies. This approach provides a classical desktop-app experience for investigators while retaining a fast and maintainable modern UI development stack.\n\nThe platform performs operating-system-aware inspection on either a live Linux filesystem context or a disk image/filesystem snapshot. It identifies Linux distribution characteristics, detects potentially misused tool artefacts, classifies findings into risk-oriented categories, and generates structured reports with supporting indicators.\n\nThe backend is intentionally forensic-aware and non-destructive, with read-only evidence handling, integrity metadata, provenance, and audit context. Analysis modules focus on package and filesystem traces, configuration artefacts, metadata, persistence indicators, and related system evidence that remain meaningful even in privacy-centric or partially amnesic environments.\n\nThe final output is actionable for investigators: identified OS profile, detected tools and traces, risk classification, and investigation observations in JSON/HTML/PDF formats",
+    features: [
+      "Multi-source forensic analysis across live systems, disk images, and remote environments",
+      "Advanced artifact detection and system abuse pattern recognition",
+      "Memory forensics engine with RAM dump analysis and hidden process detection",
+      "AI-assisted investigation layer for intelligent timeline analysis",
+      "Browser, multimedia, and specialized artifact extraction",
+      "Evidence integrity with hashing and chain-of-custody support",
+      "Comprehensive reporting with interactive desktop UI",
+    ],
+    tech: {
+      "Frontend": "Electron Desktop App, React.js (Vite), JavaScript (JSX), custom CSS, Lucide React icons",
+      "Backend": "Python 3, FastAPI, Uvicorn, Pydantic",
+      "Forensics Engines": "Sleuth Kit via pytsk3, Volatility 3 (memory dumps), Linux /proc live artifact parsing",
+      "AI/LLM Integration": "Ollama-backed analysis modules (timeline + memory insights)",
+      "Data Layer": "JSON/file-based case and report persistence",
+      "Reporting": "JSON export + structured HTML/PDF report generation",
+      "Remote Collection": "SSH/SSHFS-based bounded remote acquisition workflows",
+      "Runtime/Platform": "Linux-first forensic runtime",
+      "Deployment": "Local/self-hosted (cloud deployment target can be added separately, e.g., AWS/GCP/Azure)"
+    },
+    github: "https://github.com/ShudarsanRegmi/negceslab",
+    video: "https://youtu.be/MB_2VwwThAA?si=v4ofba-Y_cmInDXL",
+  },
   sniffer: {
     title: "Network Packet Sniffer",
     image: packetSniffer1,
@@ -34,7 +86,6 @@ const projectDetails = {
       "Real-time packet capture using raw sockets",
       "Protocol-level filtering (TCP, UDP)",
       "Packet header analysis and decoding",
-      // "Traffic statistics and visualization",
       "Command-line interface with filtering options",
     ],
     tech: {
@@ -45,7 +96,7 @@ const projectDetails = {
     },
     github: "https://github.com/ShudarsanRegmi/packetSniffer",
   },
-  classroom : {
+  classroom: {
     title: "Classroom Management System",
     image: classroom1,
     overview: "A full-stack MERN application designed to simplify classroom operations through centralized communication, content sharing, attendance tracking, and role-based access control.",
@@ -85,26 +136,25 @@ const projectDetails = {
     },
     github: "https://github.com/ShudarsanRegmi/InfoSys-SpringBoard-Fashion-Ecommerce-Project"
   },
-
   voxtalkinux: {
-  title: "VoxTalkinux – Minimal Voice Transcription Utility",
-  image: vox1,
-  overview: "A lightweight voice transcription tool designed for Linux, built around OpenAI Whisper. It wraps Whisper into a streamlined interface with support for background execution (via systemd), clipboard integration (xclip), and quick access through a keyboard shortcut. Ideal for users seeking fast and offline transcription workflows.",
-  features: [
-    "Offline transcription using OpenAI Whisper",
-    "Systemd service for background listening",
-    "Clipboard integration with xclip",
-    "Triggerable via global keyboard shortcut",
-    "Adaptable to Windows with minor environment tweaks"
-  ],
-  tech: {
-    "Language": "Python",
-    "Speech-to-Text": "OpenAI Whisper",
-    "OS Integration": "Systemd, Xclip, Keyboard Shortcuts",
-    "Platform": "Linux (Desktop)"
-  },
-  github: "https://github.com/ShudarsanRegmi/voxtalkinux/"
-}
+    title: "VoxTalkinux – Minimal Voice Transcription Utility",
+    image: vox1,
+    overview: "A lightweight voice transcription tool designed for Linux, built around OpenAI Whisper. It wraps Whisper into a streamlined interface with support for background execution (via systemd), clipboard integration (xclip), and quick access through a keyboard shortcut. Ideal for users seeking fast and offline transcription workflows.",
+    features: [
+      "Offline transcription using OpenAI Whisper",
+      "Systemd service for background listening",
+      "Clipboard integration with xclip",
+      "Triggerable via global keyboard shortcut",
+      "Adaptable to Windows with minor environment tweaks"
+    ],
+    tech: {
+      "Language": "Python",
+      "Speech-to-Text": "OpenAI Whisper",
+      "OS Integration": "Systemd, Xclip, Keyboard Shortcuts",
+      "Platform": "Linux (Desktop)"
+    },
+    github: "https://github.com/ShudarsanRegmi/voxtalkinux/"
+  }
 };
 
 interface ProjectModalProps {

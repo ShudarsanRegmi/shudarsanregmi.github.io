@@ -16,6 +16,14 @@ const projects = [
     tags: ["MERN", "Hosting", "RealWorldImpact"],
     color: "text-[var(--accent-green)]",
 },
+  {
+    id: "osforensics",
+    title: "OSForensics : Attacker Favoured Linux System Forensics",
+    description: "A tool for analyzing and investigating operating system artifacts to aid in digital forensics and security research.",
+    image: negcesthumb,
+    tags: ["Python", "Digital Forensics","Disk Analysis", "Memory Analysis"],
+    color: "text-[var(--accent-blue)]",
+},
 {
     id: "nutrisuppliers",
     title: "Digital Ledger for NutriSuppliers",
