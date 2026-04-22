@@ -6,7 +6,7 @@ import classroom2 from "@/assets/classroom2.png";
 import vox1 from "@/assets/vox1_1.png";
 import negcesthumb from "@/assets/negcesthumb.png";
 import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
-
+import nutrithumb from "@/assets/nutrithumb.png";
 
 const projects = [
   {
@@ -29,7 +29,7 @@ const projects = [
     id: "nutrisuppliers",
     title: "Digital Ledger for NutriSuppliers",
     description: "Online Ledger Management for a medical suppliers Business. This project helped the client to migrate his physical ledger records to fully digital.",
-    image: negcesthumb,
+    image: nutrithumb,
     tags: ["MERN", "Hosting", "RealWorldImpact"],
     color: "text-[var(--accent-green)]",
 },

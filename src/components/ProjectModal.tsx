@@ -1,10 +1,68 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Github, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import {
+  X,
+  Github,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Minimize2,
+  Monitor,
+  Server,
+  Database,
+  Cloud,
+  Terminal,
+  FlaskConical,
+  Workflow,
+  Link,
+  Box,
+  Search,
+  Globe,
+  Wrench,
+  Binary,
+  ScanSearch,
+  Cpu,
+  Brain,
+  FileText,
+  Network,
+  Rocket,
+  Code2,
+  Shield,
+  HardDrive,
+  Mic,
+  Lock,
+  Layers,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  SiPython,
+  SiReact,
+  SiFastapi,
+  SiMongodb,
+  SiNodedotjs,
+  SiExpress,
+  SiTailwindcss,
+  SiJavascript,
+  SiVite,
+  SiElectron,
+  SiPydantic,
+  SiDocker,
+  SiAmazon,
+  SiGooglecloud,
+  SiFirebase,
+  SiCloudinary,
+  SiSqlite,
+  SiFlask,
+  SiOpenai,
+  SiCss3,
+  SiHtml5,
+  SiLinux,
+  SiJson,
+  SiUbuntu,
+} from "react-icons/si";
+import { useEffect, useMemo, useState, type ComponentType, type CSSProperties } from "react";
 import packetSniffer1 from '@/assets/packetsniffer1.png';
 import classroom1 from '@/assets/classroom1.png';
 import vox1 from "@/assets/vox1_1.png";
-import negcesthumb from "@/assets/negcesthumb.png";
 import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
 import osForensicsAiInvestigator from '@/assets/osforensics/ai_investigator.png';
 import osForensicsBrowserArtifacts from '@/assets/osforensics/browser_artifacts.png';
@@ -16,13 +74,48 @@ import osForensicsRecent from '@/assets/osforensics/recent.png';
 import osForensicsServices from '@/assets/osforensics/services.png';
 import osForensicsSources from '@/assets/osforensics/sources.png';
 import osForensicsTimeline from '@/assets/osforensics/timeline.png';
+import nutriSuppliers01 from '@/assets/nutrisuppliers/01.png';
+import nutriSuppliers02 from '@/assets/nutrisuppliers/02.png';
+import nutriSuppliers03 from '@/assets/nutrisuppliers/03.png';
+import nutriSuppliers04 from '@/assets/nutrisuppliers/04.png';
+import nutriSuppliers05 from '@/assets/nutrisuppliers/05.png';
+import nutriSuppliers06 from '@/assets/nutrisuppliers/06.png';
+import nutriSuppliers07 from '@/assets/nutrisuppliers/07.png';
+import nutriSuppliers08 from '@/assets/nutrisuppliers/08.png';
+import nutriSuppliers09 from '@/assets/nutrisuppliers/09.png';
+import negces01 from '@/assets/negces/01.png';
+import negces02 from '@/assets/negces/02.png';
+import negces03 from '@/assets/negces/03.png';
+import negces04 from '@/assets/negces/04.png';
+import negces05 from '@/assets/negces/05.png';
+import negces06 from '@/assets/negces/06.png';
+import negces07 from '@/assets/negces/07.png';
+import negces08 from '@/assets/negces/08.png';
+import negces09 from '@/assets/negces/09.png';
+import negces10 from '@/assets/negces/10.png';
+import negces11 from '@/assets/negces/11.png';
+import negces12 from '@/assets/negces/12.png';
 
 
 const projectDetails = {
   negceslab: {
-    title: "Negces Lab Booking Management System",
-    image: negcesthumb,
-    overview: "Comprehensive booking management platform for the NEGCES Lab at Amrita Vishwa Vidyapeetham, Chennai, designed to simplify lab reservations and optimize scheduling for students and faculty.",
+    title: "Negces Lab Slot Booking Management System",
+    image: negces01,
+    gallery: [
+      negces01,
+      negces02,
+      negces03,
+      negces04,
+      negces05,
+      negces06,
+      negces07,
+      negces08,
+      negces09,
+      negces10,
+      negces11,
+      negces12,
+    ],
+    overview: "Comprehensive slot booking management platform for the NEGCES Lab at Amrita Vishwa Vidyapeetham, Chennai, designed to simplify lab reservations and optimize scheduling for students and faculty.",
     features: [
       "User-friendly interface for booking management",
       "Real-time availability tracking",
@@ -33,9 +126,11 @@ const projectDetails = {
       "Frontend": "React.js + Tailwind CSS",
       "Backend": "Node.js + Express.js",
       "Database": "MongoDB",
-      "Hosting": "AWS",
+      "Hosting": "Onpremise Linux Server",
     },
     github: "https://github.com/ShudarsanRegmi/negceslab",
+    video: "https://youtu.be/MB_2VwwThAA?si=v4ofba-Y_cmInDXL",
+    deployment: "https://intranet.ch.amrita.edu/negces",
   },
   osforensics: {
     title: "OSForensics : Attacker Favoured Linux System Forensics",
@@ -65,7 +160,7 @@ const projectDetails = {
       "Comprehensive reporting with interactive desktop UI",
     ],
     tech: {
-      "Frontend": "Electron Desktop App, React.js (Vite), JavaScript (JSX), custom CSS, Lucide React icons",
+      "Frontend": "Electron Desktop App, React.js (Vite), JavaScript (JSX), CSS, Lucide React icons",
       "Backend": "Python 3, FastAPI, Uvicorn, Pydantic",
       "Forensics Engines": "Sleuth Kit via pytsk3, Volatility 3 (memory dumps), Linux /proc live artifact parsing",
       "AI/LLM Integration": "Ollama-backed analysis modules (timeline + memory insights)",
@@ -73,10 +168,51 @@ const projectDetails = {
       "Reporting": "JSON export + structured HTML/PDF report generation",
       "Remote Collection": "SSH/SSHFS-based bounded remote acquisition workflows",
       "Runtime/Platform": "Linux-first forensic runtime",
-      "Deployment": "Local/self-hosted (cloud deployment target can be added separately, e.g., AWS/GCP/Azure)"
+      "Deployment": "Desktop app"
     },
     github: "https://github.com/ShudarsanRegmi/negceslab",
     video: "https://youtu.be/MB_2VwwThAA?si=v4ofba-Y_cmInDXL",
+  },
+  nutrisuppliers: {
+    title: "NutriSuppliers - Digital Ledger Management System",
+    image: nutriSuppliers01,
+    gallery: [
+      nutriSuppliers01,
+      nutriSuppliers02,
+      nutriSuppliers03,
+      nutriSuppliers04,
+      nutriSuppliers05,
+      nutriSuppliers06,
+      nutriSuppliers07,
+      nutriSuppliers08,
+      nutriSuppliers09,
+    ],
+    overview: "A comprehensive digital ledger management system designed for pharmacy and medical supply businesses. The application digitizes traditional paper-based ledger operations, providing real-time transaction tracking, client management, and detailed financial reporting with mobile accessibility.",
+    abstract: "NutriSuppliers is a custom-built ledger management application developed for pharmacy and medical supply business named Nutrisuppliers transitioning from paper-based record-keeping to digital operations. The system addresses the specific workflow requirements of medical supply distributors by providing comprehensive transaction management, client relationship tracking, and inventory ledger functionality. Delivered as a responsive web application with Progressive Web App (PWA) capabilities, the platform ensures accessibility across desktop and mobile devices with offline functionality. The architecture prioritizes data security through Firebase-backed authentication and real-time synchronization, while maintaining an intuitive interface optimized for daily business operations. The system supports multi-user workflows with role-based access control and generates structured financial reports for business analysis and compliance.",
+    features: [
+      "Real-time digital ledger transaction management",
+      "Transaction tracking with automated running balances",
+      "Debit and credit recording with payment source tracking",
+      "Monthly financial reports and analytics",
+      "Multi-device support with Progressive Web App technology",
+      "Offline functionality and data synchronization",
+      "Image upload and document attachment capabilities",
+      "Secure authentication and data isolation",
+      "Responsive design for desktop and mobile platforms",
+    ],
+    tech: {
+      "Frontend": "React, TypeScript, Vite, Tailwind CSS, Radix UI",
+      "Backend": "Firebase (Authentication + Firestore real-time database)",
+      // "Storage": "Appwrite (image and document storage)",
+      "State Management": "TanStack Query",
+      "Routing": "Wouter",
+      "Form Validation": "React Hook Form with Zod",
+      "Progressive Web App": "Service Workers, Web App Manifest, offline caching",
+      "Localization": "Nepali date picker support",
+      "Build": "Vite"
+    },
+    github: "https://github.com/ShudarsanRegmi/nutrisuppliers",
+    video: "https://youtu.be/DvJa44Kr5tk?si=N9kTgEvpRBwdXAr1",
   },
   sniffer: {
     title: "Network Packet Sniffer",
@@ -184,6 +320,138 @@ function getYouTubeEmbedUrl(url: string) {
   }
 }
 
+function getTechStackIcon(key: string): LucideIcon {
+  const normalizedKey = key.toLowerCase();
+
+  if (normalizedKey.includes("frontend")) return Monitor;
+  if (normalizedKey.includes("backend")) return Server;
+  if (normalizedKey.includes("database") || normalizedKey.includes("data layer")) return Database;
+  if (normalizedKey.includes("hosting") || normalizedKey.includes("deployment")) return Cloud;
+  if (normalizedKey.includes("engine")) return Cpu;
+  if (normalizedKey.includes("ai") || normalizedKey.includes("llm")) return Brain;
+  if (normalizedKey.includes("report")) return FileText;
+  if (normalizedKey.includes("remote") || normalizedKey.includes("network")) return Network;
+  if (normalizedKey.includes("runtime") || normalizedKey.includes("platform")) return Rocket;
+  if (normalizedKey.includes("language") || normalizedKey.includes("sockets") || normalizedKey.includes("protocol")) return Code2;
+  if (normalizedKey.includes("auth") || normalizedKey.includes("security")) return Shield;
+  if (normalizedKey.includes("storage") || normalizedKey.includes("memory")) return HardDrive;
+  if (normalizedKey.includes("speech") || normalizedKey.includes("voice") || normalizedKey.includes("audio")) return Mic;
+  if (normalizedKey.includes("os integration")) return Lock;
+
+  return Layers;
+}
+
+function getTechStackIconColor(key: string): string {
+  const normalizedKey = key.toLowerCase();
+
+  if (normalizedKey.includes("frontend")) return "#38bdf8";
+  if (normalizedKey.includes("backend")) return "#22c55e";
+  if (normalizedKey.includes("database") || normalizedKey.includes("data layer")) return "#10b981";
+  if (normalizedKey.includes("hosting") || normalizedKey.includes("deployment")) return "#f59e0b";
+  if (normalizedKey.includes("engine")) return "#ef4444";
+  if (normalizedKey.includes("ai") || normalizedKey.includes("llm")) return "#a855f7";
+  if (normalizedKey.includes("remote") || normalizedKey.includes("network")) return "#06b6d4";
+  if (normalizedKey.includes("auth") || normalizedKey.includes("security")) return "#f97316";
+
+  return "#60a5fa";
+}
+
+function getTechnologyTokens(value: string): string[] {
+  return value
+    .split(/,|\+|\(|\)|\//g)
+    .flatMap((part) => part.split(/\bvia\b/gi))
+    .map((token) => token.trim())
+    .filter(Boolean)
+    .filter((token, index, arr) => arr.findIndex((t) => t.toLowerCase() === token.toLowerCase()) === index);
+}
+
+function getTechnologyIcon(technology: string): ComponentType<{ className?: string; style?: CSSProperties }> {
+  const token = technology.toLowerCase();
+
+  if (token.includes("python")) return SiPython;
+  if (token.includes("react")) return SiReact;
+  if (token.includes("fastapi")) return SiFastapi;
+  if (token.includes("mongodb")) return SiMongodb;
+  if (token.includes("node")) return SiNodedotjs;
+  if (token.includes("express")) return SiExpress;
+  if (token.includes("tailwind")) return SiTailwindcss;
+  if (token.includes("javascript") || token.includes("jsx")) return SiJavascript;
+  if (token.includes("vite")) return SiVite;
+  if (token.includes("electron")) return SiElectron;
+  if (token.includes("pydantic")) return SiPydantic;
+  if (token.includes("docker")) return SiDocker;
+  if (token.includes("aws")) return SiAmazon;
+  if (token.includes("gcp") || token.includes("google cloud")) return SiGooglecloud;
+  if (token.includes("azure")) return Cloud;
+  if (token.includes("firebase")) return SiFirebase;
+  if (token.includes("cloudinary")) return SiCloudinary;
+  if (token.includes("sqlite")) return SiSqlite;
+  if (token.includes("flask")) return SiFlask;
+  if (token.includes("ollama") || token.includes("whisper") || token.includes("openai")) return SiOpenai;
+  if (token === "css" || token.includes("css3")) return SiCss3;
+  if (token === "html" || token.includes("html5")) return SiHtml5;
+  if (token.includes("ubuntu")) return SiUbuntu;
+  if (token.includes("linux")) return SiLinux;
+  if (token.includes("json")) return SiJson;
+
+  if (token.includes("pytsk3")) return Terminal;
+  if (token.includes("uvicorn")) return FlaskConical;
+  if (token.includes("sqlalchemy")) return Database;
+  if (token.includes("material ui")) return Monitor;
+  if (token.includes("sleuth kit") || token.includes("tsk") || token.includes("volatility") || token.includes("forensic")) return ScanSearch;
+  if (token.includes("matplotlib")) return Brain;
+  if (token.includes("ssh") || token.includes("sshfs") || token.includes("socket") || token.includes("tcp") || token.includes("udp")) return Network;
+  if (token.includes("unix") || token.includes("systemd")) return Binary;
+  if (token.includes("firebase") || token.includes("auth")) return Shield;
+  if (token.includes("cloud")) return Cloud;
+  if (token.includes("runtime") || token.includes("platform") || token.includes("desktop")) return Box;
+  if (token.includes("workflow") || token.includes("integration")) return Workflow;
+  if (token.includes("remote") || token.includes("web") || token.includes("html")) return Globe;
+  if (token.includes("report") || token.includes("pdf")) return FileText;
+  if (token.includes("xclip") || token.includes("tool")) return Wrench;
+  if (token.includes("proc") || token.includes("artifact")) return Search;
+
+  return Link;
+}
+
+function getTechnologyIconColor(technology: string): string {
+  const token = technology.toLowerCase();
+
+  if (token.includes("python")) return "#3776ab";
+  if (token.includes("react")) return "#61dafb";
+  if (token.includes("fastapi")) return "#009688";
+  if (token.includes("mongodb")) return "#47a248";
+  if (token.includes("node")) return "#339933";
+  if (token.includes("express")) return "#9ca3af";
+  if (token.includes("tailwind")) return "#06b6d4";
+  if (token.includes("javascript") || token.includes("jsx")) return "#f7df1e";
+  if (token.includes("vite")) return "#646cff";
+  if (token.includes("electron")) return "#47848f";
+  if (token.includes("pydantic")) return "#e92063";
+  if (token.includes("docker")) return "#2496ed";
+  if (token.includes("aws")) return "#ff9900";
+  if (token.includes("gcp") || token.includes("google cloud")) return "#4285f4";
+  if (token.includes("azure")) return "#0078d4";
+  if (token.includes("firebase")) return "#ffca28";
+  if (token.includes("cloudinary")) return "#3448c5";
+  if (token.includes("sqlite")) return "#003b57";
+  if (token.includes("flask")) return "#d1d5db";
+  if (token.includes("ollama") || token.includes("whisper") || token.includes("openai")) return "#10a37f";
+  if (token === "css" || token.includes("css3")) return "#1572b6";
+  if (token === "html" || token.includes("html5")) return "#e34f26";
+  if (token.includes("ubuntu")) return "#e95420";
+  if (token.includes("linux")) return "#facc15";
+  if (token.includes("json")) return "#f59e0b";
+
+  if (token.includes("sleuth kit") || token.includes("tsk") || token.includes("volatility") || token.includes("forensic")) return "#ef4444";
+  if (token.includes("pytsk3") || token.includes("uvicorn") || token.includes("sqlalchemy")) return "#8b5cf6";
+  if (token.includes("ssh") || token.includes("sshfs") || token.includes("tcp") || token.includes("udp") || token.includes("socket")) return "#06b6d4";
+  if (token.includes("systemd") || token.includes("unix")) return "#14b8a6";
+  if (token.includes("report") || token.includes("pdf")) return "#fb7185";
+
+  return "#60a5fa";
+}
+
 export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const project = projectDetails[projectId as keyof typeof projectDetails];
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
@@ -222,6 +490,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const hasGallery = "gallery" in project && Array.isArray(project.gallery) && project.gallery.length > 0;
   const hasAbstract = "abstract" in project && Boolean(project.abstract);
   const hasVideo = "video" in project && Boolean(project.video) && Boolean(videoEmbedUrl);
+  const hasDeployment = "deployment" in project && Boolean(project.deployment);
   const canBrowseGallery = galleryImages.length > 1;
 
   const showPreviousImage = () => {
@@ -369,31 +638,66 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                   Tech Stack
                 </h4>
                 <div className="space-y-3">
-                  {Object.entries(project.tech).map(([key, value]) => (
+                  {Object.entries(project.tech).map(([key, value]) => {
+                    const TechStackIcon = getTechStackIcon(key);
+                    const techStackIconColor = getTechStackIconColor(key);
+                    const technologies = getTechnologyTokens(value);
+
+                    return (
                     <div key={key} className="glass-panel dark:glass-panel light:glass-panel-light rounded-xl p-4 bg-background/50">
-                      <p className="text-xs font-semibold tracking-wide uppercase text-muted-foreground mb-2">
-                        {key}
-                      </p>
-                      <p className="font-medium text-foreground text-sm leading-relaxed break-words whitespace-pre-wrap">
-                        {value}
-                      </p>
+                      <div className="flex items-center gap-2 mb-2 text-muted-foreground">
+                        <TechStackIcon className="w-4 h-4 shrink-0" style={{ color: techStackIconColor }} />
+                        <p className="text-xs font-semibold tracking-wide uppercase">
+                          {key}
+                        </p>
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {technologies.map((technology) => {
+                          const TechnologyIcon = getTechnologyIcon(technology);
+                          const technologyIconColor = getTechnologyIconColor(technology);
+
+                          return (
+                            <span
+                              key={`${key}-${technology}`}
+                              className="inline-flex items-center gap-1.5 rounded-full border border-border/80 px-2.5 py-1 text-xs text-foreground/90 bg-background/60"
+                            >
+                              <TechnologyIcon className="w-3.5 h-3.5 shrink-0" style={{ color: technologyIconColor }} />
+                              {technology}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
-            {project.github && (
-              <div className="pt-6 border-t border-border flex justify-end">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
-                >
-                  <Github className="w-5 h-5" />
-                  View on GitHub
-                </a>
+            {(project.github || hasDeployment) && (
+              <div className="pt-6 border-t border-border flex justify-end gap-4">
+                {hasDeployment && (
+                  <a
+                    href={project.deployment}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
+                  >
+                    <Globe className="w-5 h-5" />
+                    View Deployment
+                  </a>
+                )}
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:underline"
+                  >
+                    <Github className="w-5 h-5" />
+                    View on GitHub
+                  </a>
+                )}
               </div>
             )}
           </div>
