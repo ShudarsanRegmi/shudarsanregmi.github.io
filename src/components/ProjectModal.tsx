@@ -592,6 +592,10 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
     setCurrentGalleryIndex((prev) => (prev + 1) % galleryImages.length);
   };
 
+  const openFullscreenGallery = () => {
+    setIsFullscreenGallery(true);
+  };
+
   return (
     <AnimatePresence>
       <motion.div
@@ -606,7 +610,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 50 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="glass-panel dark:glass-panel light:glass-panel-light rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border border-border"
+          className="glass-panel dark:glass-panel light:glass-panel-light rounded-3xl p-8 max-w-5xl w-full max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border border-border [scrollbar-width:thin] [scrollbar-color:rgba(255,255,255,0.22)_transparent] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/20 hover:[&::-webkit-scrollbar-thumb]:bg-white/35"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex justify-between items-center mb-6">
@@ -621,7 +625,13 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
           <div className="space-y-6">
             <div className="space-y-3">
-              <div className="relative">
+              <div
+                className="relative cursor-zoom-in"
+                onClick={openFullscreenGallery}
+                role="button"
+                tabIndex={0}
+                aria-label="Open fullscreen gallery"
+              >
                 <img
                   src={galleryImages[currentGalleryIndex]}
                   alt={`${project.title} preview ${currentGalleryIndex + 1}`}
@@ -630,7 +640,10 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
                 {canBrowseGallery && (
                   <button
-                    onClick={() => setIsFullscreenGallery(true)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      openFullscreenGallery();
+                    }}
                     className="absolute right-3 top-3 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
                     aria-label="Open fullscreen gallery"
                   >
@@ -641,14 +654,20 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 {canBrowseGallery && (
                   <>
                     <button
-                      onClick={showPreviousImage}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        showPreviousImage();
+                      }}
                       className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
-                      onClick={showNextImage}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        showNextImage();
+                      }}
                       className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/45 text-white hover:bg-black/65 transition-colors"
                       aria-label="Next image"
                     >
@@ -663,7 +682,10 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                   {galleryImages.map((img, index) => (
                     <button
                       key={`${img}-${index}`}
-                      onClick={() => setCurrentGalleryIndex(index)}
+                      onClick={() => {
+                        setCurrentGalleryIndex(index);
+                        setIsFullscreenGallery(true);
+                      }}
                       className={`h-14 w-20 rounded-lg overflow-hidden border transition-all ${
                         index === currentGalleryIndex ? "border-[var(--accent-blue)]" : "border-border"
                       }`}

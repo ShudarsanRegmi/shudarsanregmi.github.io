@@ -8,6 +8,7 @@ import negcesthumb from "@/assets/negcesthumb.png";
 import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
 import nutrithumb from "@/assets/nutrithumb.png";
 import llmVulnScannerThumb from "@/assets/llmvuln/01.png";
+import styleverseThumb from '@/assets/styleverse/01.png';
 
 const projects = [
   {
@@ -72,7 +73,7 @@ const projects = [
     id: "ecommerce",
     title: "Fashion E-Commerce Website",
     description: "Complete e-commerce platform with user and admin functionality, featuring inventory management, order tracking, and sales analytics.",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=400",
+    image: styleverseThumb,
     tags: ["Python", "Flask", "SQLite", "JavaScript"],
     color: "text-[var(--accent-blue)]",
   },
