@@ -22,6 +22,7 @@ function Routes() {
     <div className="min-h-screen relative">
       <AnimatedBackground />
       <Dock />
+      <div aria-hidden="true" className="h-28 md:h-32" />
       <Switch>
         <Route path="/" component={() => <PageTransition><Hero /></PageTransition>} />
         <Route path="/about" component={() => <PageTransition><About /></PageTransition>} />

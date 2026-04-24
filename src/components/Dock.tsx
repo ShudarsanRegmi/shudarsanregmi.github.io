@@ -28,9 +28,9 @@ export function Dock() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-8 left-1/2 transform -translate-x-1/2 z-50"
+      className="fixed inset-x-0 top-4 z-50 flex justify-center px-4"
     >
-      <div className="glass-panel rounded-2xl px-6 py-4">
+      <div className="glass-panel w-fit max-w-[calc(100vw-2rem)] rounded-2xl px-6 py-4 shadow-2xl backdrop-blur-xl">
         <div className="flex items-center justify-center space-x-2">
           {dockItems.map(({ icon: Icon, path, label }) => (
             <Link key={path} href={path}>

@@ -74,12 +74,12 @@
 
   /* Page content spacing to prevent dock overlap */
   section {
-    padding-top: 120px;
+    padding-top: 140px;
   }
 
   /* Hero section needs less padding since profile image is centered */
   section:has(.profile-image-container) {
-    padding-top: 100px;
+    padding-top: 120px;
   }
 }
 
