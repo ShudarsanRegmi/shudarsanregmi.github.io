@@ -7,6 +7,7 @@ import vox1 from "@/assets/vox1_1.png";
 import negcesthumb from "@/assets/negcesthumb.png";
 import osForensicsDesktopApp from '@/assets/osforensics/Desktopapp.png';
 import nutrithumb from "@/assets/nutrithumb.png";
+import llmVulnScannerThumb from "@/assets/llmvuln/01.png";
 
 const projects = [
   {
@@ -33,14 +34,23 @@ const projects = [
     tags: ["MERN", "Hosting", "RealWorldImpact"],
     color: "text-[var(--accent-green)]",
 },
-{
-    id: "gymmembership",
-    title: "Gym Membership Management System",
-    description: "A comprehensive system for managing gym memberships, including user registration, membership plans, and payment processing.",
-    image: negcesthumb,
-    tags: ["C++", "QT", "Sqlite3", "Desktop Application"],
+ {
+    id: "llmvulnscanner",
+    title: "LLM Vulnerability Scanner",
+    description: "A tool to asses security of LLM Integrated Chatbots focused on sensitive data leakage and unauthorized access.",
+    image: llmVulnScannerThumb,
+    tags: ["Pyton", "Deep Learning", "Transformers", "Research"],
     color: "text-[var(--accent-green)]",
 },
+
+// {
+//     id: "gymmembership",
+//     title: "Gym Membership Management System",
+//     description: "A comprehensive system for managing gym memberships, including user registration, membership plans, and payment processing.",
+//     image: negcesthumb,
+//     tags: ["C++", "QT", "Sqlite3", "Desktop Application"],
+//     color: "text-[var(--accent-green)]",
+// },
   {
     id: "sniffer",
     title: "Network Packet Sniffer",
@@ -49,14 +59,7 @@ const projects = [
     tags: ["C", "Raw Sockets", "Network Protocols"],
     color: "text-[var(--accent-blue)]",
   },
-  {
-    id: "llmvulnscanner",
-    title: "LLM Vulnerability Scanner",
-    description: "A tool to asses security of LLM Integrated Chatbots focused on sensitive data leakage and unauthorized access.",
-    image: negcesthumb,
-    tags: ["Pyton", "Deep Learning", "Transformers", "Research"],
-    color: "text-[var(--accent-green)]",
-},
+ 
   {
     id: "classroom",
     title: "Classroom Management System",
