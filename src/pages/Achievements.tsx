@@ -27,7 +27,7 @@ const achievements = [
     icon: FileText,
     date: "2024",
     title: "Research Publication",
-    subtitle: "IEEE indexed publication",
+    subtitle: "Scopus indexed publication",
     description:
       "Co-authored and published applied research with practical impact in real-world domains.",
     stripe: "from-emerald-400/35 via-teal-500/20 to-cyan-500/20",
@@ -58,7 +58,7 @@ const achievements = [
       "Established a high-performance baseline early with top-3 results in foundational subjects.",
     stripe: "from-sky-400/35 via-blue-500/20 to-cyan-500/20",
     dot: "bg-sky-400",
-    badge: "8.7 SGPA",
+    badge: "9.07 SGPA",
     shieldImage: badgeRankBronze,
   },
 ];
