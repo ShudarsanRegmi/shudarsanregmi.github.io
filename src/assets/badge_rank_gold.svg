@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 300" role="img" aria-label="Gold winner badge">
+  <defs>
+    <linearGradient id="rim2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff8dc"/>
+      <stop offset="50%" stop-color="#d6b96f"/>
+      <stop offset="100%" stop-color="#fff3c4"/>
+    </linearGradient>
+    <radialGradient id="goldCore2" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fff59d"/>
+      <stop offset="60%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </radialGradient>
+    <linearGradient id="ribbonGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 138l-30 118 30-20 28 20 14-112z" fill="url(#ribbonGold)"/>
+  <path d="M158 138l30 118-30-20-28 20-14-112z" fill="url(#ribbonGold)"/>
+  <circle cx="110" cy="102" r="86" fill="url(#rim2)"/>
+  <circle cx="110" cy="102" r="66" fill="url(#goldCore2)"/>
+  <circle cx="110" cy="102" r="56" fill="none" stroke="#fffde7" stroke-width="4" stroke-dasharray="2 8"/>
+  <text x="110" y="88" text-anchor="middle" fill="#78350f" font-size="20" font-family="Arial" font-weight="700">WIN</text>
+  <text x="110" y="120" text-anchor="middle" fill="#451a03" font-size="30" font-family="Arial" font-weight="800">TEAM</text>
+</svg>

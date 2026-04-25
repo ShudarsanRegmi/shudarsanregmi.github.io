@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 300" role="img" aria-label="Silver merit badge">
+  <defs>
+    <linearGradient id="rim3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#9ca3af"/>
+      <stop offset="100%" stop-color="#f3f4f6"/>
+    </linearGradient>
+    <radialGradient id="silverCore3" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="60%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#475569"/>
+    </radialGradient>
+    <linearGradient id="ribbonSilver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#93c5fd"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 138l-30 118 30-20 28 20 14-112z" fill="url(#ribbonSilver)"/>
+  <path d="M158 138l30 118-30-20-28 20-14-112z" fill="url(#ribbonSilver)"/>
+  <circle cx="110" cy="102" r="86" fill="url(#rim3)"/>
+  <circle cx="110" cy="102" r="66" fill="url(#silverCore3)"/>
+  <circle cx="110" cy="102" r="56" fill="none" stroke="#e2e8f0" stroke-width="4" stroke-dasharray="2 8"/>
+  <text x="110" y="88" text-anchor="middle" fill="#f8fafc" font-size="20" font-family="Arial" font-weight="700">TOP</text>
+  <text x="110" y="120" text-anchor="middle" fill="#ffffff" font-size="30" font-family="Arial" font-weight="800">MERIT</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Gold shield badge">
+  <defs>
+    <linearGradient id="goldMain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="45%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="goldCore" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fff7cc"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+  </defs>
+  <path d="M64 8L108 24v34c0 28-18 50-44 62C38 108 20 86 20 58V24L64 8z" fill="url(#goldMain)"/>
+  <path d="M64 18l33 12v28c0 22-14 39-33 50C45 97 31 80 31 58V30l33-12z" fill="url(#goldCore)" opacity="0.95"/>
+  <circle cx="64" cy="58" r="18" fill="#7c2d12" opacity="0.25"/>
+  <path d="M64 43l4.9 10 11 .9-8.3 7.1 2.5 10.8L64 66l-10.1 5.8 2.5-10.8-8.3-7.1 11-.9L64 43z" fill="#fff8dc"/>
+</svg>

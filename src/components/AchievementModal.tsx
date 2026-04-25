@@ -10,9 +10,49 @@ import research_1_2 from "@/assets/research_1_2.png";
 
 
 import first_sem_img_1 from "@/assets/first_sem_rank_3_1.jpeg";
+import cybershieldPlaceholder1 from "@/assets/cybershield_placeholder_1.svg";
+import cybershieldPlaceholder2 from "@/assets/cybershield_placeholder_2.svg";
+import cybershieldPlaceholder3 from "@/assets/cybershield_placeholder_3.svg";
 
 
 const achievementDetails = {
+  cybershield: {
+    title: "CyberShield Hackathon Winner",
+    subtitle: "Team Trace Trackers - 24-hour Cybersecurity Challenge",
+    date: "2026",
+    rank: "Winner",
+    description: "Our team Trace Trackers secured a win at the CyberShield Hackathon, a 24-hour cybersecurity challenge organized by the Department of CSE, Amrita Vishwa Vidyapeetham, Chennai Campus. This was my first hackathon victory and a major milestone in my cybersecurity journey.",
+    highlights: [
+      "Built OSForensics, a desktop forensic analysis application for Linux and attacker-preferred security distributions",
+      "Implemented core forensic workflows: case management, file system exploration, deleted file recovery, and timeline reconstruction",
+      "Engineered attack-chain analysis with command categorization, frequency analysis, and behavioral profiling",
+      "Added browser and multimedia artifact analysis, including entropy-based steganography checks and bit-plane inspection",
+      "Integrated memory forensics modules for process trees, kernel modules, and shared library analysis",
+      "Generated structured HTML and PDF reports with integrity-preservation and chain-of-custody considerations",
+      "Designed a multi-agent AI orchestration model with a supervisory agent coordinating specialized worker agents",
+      "Received appreciation from Tamil Nadu Police Cybercrime Wing with guidance for real-world refinement and scaling"
+    ],
+    subjects: [
+      { name: "Event", grade: "CyberShield Hackathon" },
+      { name: "Duration", grade: "24 Hours" },
+      { name: "Team", grade: "Trace Trackers" },
+      { name: "Teammates", grade: "Hirthik C, Maangalya K S" },
+      { name: "Product", grade: "OSForensics" },
+      { name: "Outcome", grade: "Winner" },
+    ],
+    images: [
+      cybershieldPlaceholder1,
+      cybershieldPlaceholder2,
+      cybershieldPlaceholder3,
+    ],
+    gpa: "Winner",
+    recognition: "Official Hackathon Winner - CyberShield 2026",
+    impact: "This win validated our ability to deliver a technically deep cybersecurity product under extreme time pressure. The experience strengthened my confidence in digital forensics, system design, and team execution, and opened a pathway to evolve OSForensics for practical investigative use cases.",
+    links: [
+      { title: "Hackathon Post (Add Link)", url: "#" },
+      { title: "OSForensics Demo (Add Link)", url: "#" }
+    ]
+  },
   semester1: {
     title: "3rd Rank in 1st Semester",
     subtitle: "Academic Excellence Foundation",

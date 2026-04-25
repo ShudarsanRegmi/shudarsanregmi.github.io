@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 300" role="img" aria-label="Research publication badge">
+  <defs>
+    <linearGradient id="rimResearch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dcfce7"/>
+      <stop offset="50%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#cffafe"/>
+    </linearGradient>
+    <radialGradient id="researchCore" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#a7f3d0"/>
+      <stop offset="60%" stop-color="#14b8a6"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </radialGradient>
+    <linearGradient id="ribbonResearch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 138l-30 118 30-20 28 20 14-112z" fill="url(#ribbonResearch)"/>
+  <path d="M158 138l30 118-30-20-28 20-14-112z" fill="url(#ribbonResearch)"/>
+  <circle cx="110" cy="102" r="86" fill="url(#rimResearch)"/>
+  <circle cx="110" cy="102" r="66" fill="url(#researchCore)"/>
+  <circle cx="110" cy="102" r="56" fill="none" stroke="#ecfeff" stroke-width="4" stroke-dasharray="2 8"/>
+  <text x="110" y="80" text-anchor="middle" fill="#f0fdfa" font-size="16" font-family="Arial" font-weight="700">RESEARCH</text>
+  <g transform="translate(110 112)">
+    <rect x="-24" y="-6" width="48" height="26" rx="4" fill="#e6fffa" opacity="0.9"/>
+    <path d="M-10 -24h20v8l-6 8v10h-8V-8l-6-8z" fill="#f8fafc"/>
+    <circle cx="0" cy="8" r="6" fill="#0f766e" opacity="0.45"/>
+    <path d="M-4 -24h8" stroke="#14b8a6" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 300" role="img" aria-label="First rank red badge">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f5f5f5"/>
+      <stop offset="50%" stop-color="#b8bcc5"/>
+      <stop offset="100%" stop-color="#eceff4"/>
+    </linearGradient>
+    <radialGradient id="redCore" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#ff8a80"/>
+      <stop offset="60%" stop-color="#e53935"/>
+      <stop offset="100%" stop-color="#b71c1c"/>
+    </radialGradient>
+    <linearGradient id="ribbonRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff6b57"/>
+      <stop offset="100%" stop-color="#c62828"/>
+    </linearGradient>
+  </defs>
+  <path d="M62 138l-30 118 30-20 28 20 14-112z" fill="url(#ribbonRed)"/>
+  <path d="M158 138l30 118-30-20-28 20-14-112z" fill="url(#ribbonRed)"/>
+  <circle cx="110" cy="102" r="86" fill="url(#rim)"/>
+  <circle cx="110" cy="102" r="66" fill="url(#redCore)"/>
+  <circle cx="110" cy="102" r="56" fill="none" stroke="#ffd54f" stroke-width="4" stroke-dasharray="2 8"/>
+  <text x="110" y="88" text-anchor="middle" fill="#fffde7" font-size="20" font-family="Arial" font-weight="700">1st</text>
+  <text x="110" y="120" text-anchor="middle" fill="#ffffff" font-size="30" font-family="Arial" font-weight="800">RANK</text>
+</svg>
