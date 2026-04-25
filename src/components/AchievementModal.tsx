@@ -239,6 +239,24 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
         : "Academic Snapshot";
 
   const SnapshotIcon = achievement.kind === "hackathon" ? Shield : achievement.kind === "research" ? BookOpen : Award;
+  const subjectRows =
+    achievement.kind === "academic"
+      ? achievementId === "semester2"
+        ? [
+            { name: "Programming Lab", grade: "O" },
+            { name: "Engineering Physics", grade: "A+" },
+            { name: "Computer Architecture", grade: "A+" },
+            { name: "Computer Programming", grade: "A+" },
+            { name: "Cyber Security Essentials", grade: "A+" },
+            { name: "Number Theory", grade: "A+" },
+          ]
+        : [
+            { name: "Principles of Engineering", grade: "A+" },
+            { name: "Linear Algebra", grade: "A+" },
+            { name: "Algorithmic Thinking & PS", grade: "A+" },
+            { name: "Computer Hardware", grade: "A" },
+          ]
+      : [];
 
   return (
     <AnimatePresence>
@@ -338,7 +356,7 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                   <div className="flex flex-wrap gap-2">
                     {achievement.images.map((img, index) => (
                       <button
-                        key={`${img}-${index}`}
+                        key={`${achievementId}-thumb-${index}-${img}`}
                         onClick={() => setCurrentImageIndex(index)}
                         className={`group relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border transition-all sm:h-16 sm:w-16 ${
                           index === currentImageIndex ? "border-[var(--accent-blue)] ring-2 ring-[var(--accent-blue)]/40" : "border-border"
@@ -366,7 +384,7 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                     <div className="space-y-3">
                       {achievement.highlights.map((highlight, index) => (
                         <motion.div
-                          key={index}
+                          key={`${achievementId}-highlight-${index}`}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.05 }}
@@ -414,8 +432,8 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
-                          {achievement.facts.map((fact) => (
-                            <div key={fact.label} className="rounded-2xl border border-border/70 bg-background/55 p-4">
+                          {achievement.facts.map((fact, index) => (
+                            <div key={`${achievementId}-fact-${fact.label}-${index}`} className="rounded-2xl border border-border/70 bg-background/55 p-4">
                               <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{fact.label}</div>
                               <div className="mt-1 text-sm font-semibold text-foreground">{fact.value}</div>
                             </div>
@@ -425,8 +443,8 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                     ) : (
                       <div className="space-y-4">
                         <div className="grid grid-cols-2 gap-3">
-                          {achievement.facts.map((fact) => (
-                            <div key={fact.label} className="rounded-2xl border border-border/70 bg-background/55 p-4">
+                          {achievement.facts.map((fact, index) => (
+                            <div key={`${achievementId}-fact-${fact.label}-${index}`} className="rounded-2xl border border-border/70 bg-background/55 p-4">
                               <div className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">{fact.label}</div>
                               <div className="mt-1 text-sm font-semibold text-foreground">{fact.value}</div>
                             </div>
@@ -448,23 +466,9 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                   {achievement.kind === "academic" && (
                     <ExpandableSection title="Subject Breakdown" icon={Trophy}>
                       <div className="grid gap-2">
-                        {(achievementId === "semester2"
-                          ? [
-                              { name: "Programming Lab", grade: "O" },
-                              { name: "Engineering Physics", grade: "A+" },
-                              { name: "Computer Architecture", grade: "A+" },
-                              { name: "Computer Programming", grade: "A+" },
-                              { name: "Cyber Security Essentials", grade: "A+" },
-                              { name: "Number Theory", grade: "A+" },
-                            ]
-                          : [
-                              { name: "Principles of Engineering", grade: "A+" },
-                              { name: "Linear Algebra", grade: "A+" },
-                              { name: "Algorithmic Thinking & PS", grade: "A+" },
-                              { name: "Computer Hardware", grade: "A" },
-                            ]).map((subject) => (
+                        {subjectRows.map((subject, index) => (
                           <div
-                            key={subject.name}
+                            key={`${achievementId}-subject-${subject.name}-${index}`}
                             className="flex items-center justify-between rounded-xl border border-border/70 bg-background/55 px-4 py-3"
                           >
                             <span className="text-sm text-muted-foreground">{subject.name}</span>
@@ -481,7 +485,7 @@ export function AchievementModal({ achievementId, onClose }: AchievementModalPro
                 <div className="pt-2 border-t border-border flex flex-wrap justify-end gap-4">
                   {achievement.links.map((link, index) => (
                     <a
-                      key={index}
+                      key={`${achievementId}-link-${index}-${link.title}`}
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
